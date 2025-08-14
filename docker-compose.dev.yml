@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   backend:
     container_name: projeto-prefeitura-backend
@@ -8,11 +6,16 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
+    dns:
+      - "1.1.1.1"
+      - "8.8.8.8"
+      - "208.67.222.222"
     environment:
+      HOST: "0.0.0.0"
       NODE_OPTIONS: "--dns-result-order=ipv4first"
       JWT_SECRET: "minhasecretachaveforte123"
       PORT: 3000
-      DATABASE_URL: "postgresql://postgres:xhJGd1b3s5wjNYhu@db.qzhrmuxzifrigpwycnkb.supabase.co:5432/postgres?sslmode=require"
+      DATABASE_URL: "postgresql://postgres.qzhrmuxzifrigpwycnkb:xhJGd1b3s5wjNYhu@aws-0-sa-east-1.pooler.supabase.com:6543/postgres"
       TEST_EMAIL: "ong1@gmail.com"
       TEST_PASSWORD: "123456"
       CLOUDINARY_CLOUD_NAME: "dwebr0cao"
@@ -26,6 +29,9 @@ services:
       dockerfile: Dockerfile.dev
     ports:
       - "5173:5173"
+    environment:
+      VITE_API_URL: "/api"
+      VITE_PROXY_TARGET: "http://backend:3000"
     depends_on:
       - backend
 
