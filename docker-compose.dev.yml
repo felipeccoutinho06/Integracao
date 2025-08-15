@@ -11,16 +11,16 @@ services:
       - "8.8.8.8"
       - "208.67.222.222"
     environment:
-      HOST: "0.0.0.0"
-      NODE_OPTIONS: "--dns-result-order=ipv4first"
-      JWT_SECRET: "minhasecretachaveforte123"
-      PORT: 3000
-      DATABASE_URL: "postgresql://postgres.qzhrmuxzifrigpwycnkb:xhJGd1b3s5wjNYhu@aws-0-sa-east-1.pooler.supabase.com:6543/postgres"
-      TEST_EMAIL: "ong1@gmail.com"
-      TEST_PASSWORD: "123456"
-      CLOUDINARY_CLOUD_NAME: "dwebr0cao"
-      CLOUDINARY_API_KEY: "895577114474458"
-      CLOUDINARY_API_SECRET: "4WGoZX6x5Nn0tbvtHhAxLXU8BF4"
+    HOST: "0.0.0.0"
+    NODE_OPTIONS: "--dns-result-order=ipv4first"
+    JWT_SECRET: ${JWT_SECRET}
+    PORT: 3000
+    DATABASE_URL: ${DATABASE_URL}
+    TEST_EMAIL: ${TEST_EMAIL}
+    TEST_PASSWORD: ${TEST_PASSWORD}
+    CLOUDINARY_CLOUD_NAME: ${CLOUDINARY_CLOUD_NAME}
+    CLOUDINARY_API_KEY: ${CLOUDINARY_API_KEY}
+    CLOUDINARY_API_SECRET: ${CLOUDINARY_API_SECRET}
 
   frontend:
     container_name: projetoprefeitura
@@ -30,8 +30,8 @@ services:
     ports:
       - "5173:5173"
     environment:
-      VITE_API_URL: "/api"
-      VITE_PROXY_TARGET: "http://backend:3000"
+      VITE_API_URL: ${VITE_API_URL}
+      VITE_PROXY_TARGET: ${VITE_PROXY_TARGET}
     depends_on:
       - backend
 
