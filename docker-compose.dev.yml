@@ -5,22 +5,22 @@ services:
       context: ../projeto-prefeitura-backend
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "3004:3004"
     dns:
       - "1.1.1.1"
       - "8.8.8.8"
       - "208.67.222.222"
     environment:
-    HOST: "0.0.0.0"
-    NODE_OPTIONS: "--dns-result-order=ipv4first"
-    JWT_SECRET: ${JWT_SECRET}
-    PORT: 3000
-    DATABASE_URL: ${DATABASE_URL}
-    TEST_EMAIL: ${TEST_EMAIL}
-    TEST_PASSWORD: ${TEST_PASSWORD}
-    CLOUDINARY_CLOUD_NAME: ${CLOUDINARY_CLOUD_NAME}
-    CLOUDINARY_API_KEY: ${CLOUDINARY_API_KEY}
-    CLOUDINARY_API_SECRET: ${CLOUDINARY_API_SECRET}
+      HOST: "0.0.0.0"
+      NODE_OPTIONS: "--dns-result-order=ipv4first"
+      JWT_SECRET: ${JWT_SECRET}
+      PORT: 3004
+      DATABASE_URL: ${DATABASE_URL}
+      TEST_EMAIL: ${TEST_EMAIL}
+      TEST_PASSWORD: ${TEST_PASSWORD}
+      CLOUDINARY_CLOUD_NAME: ${CLOUDINARY_CLOUD_NAME}
+      CLOUDINARY_API_KEY: ${CLOUDINARY_API_KEY}
+      CLOUDINARY_API_SECRET: ${CLOUDINARY_API_SECRET}
 
   frontend:
     container_name: projetoprefeitura
@@ -28,7 +28,7 @@ services:
       context: ../Projetoprefeitura
       dockerfile: Dockerfile.dev
     ports:
-      - "5173:5173"
+      - "8004:8004"
     environment:
       VITE_API_URL: ${VITE_API_URL}
       VITE_PROXY_TARGET: ${VITE_PROXY_TARGET}
