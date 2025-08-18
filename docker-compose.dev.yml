@@ -26,9 +26,13 @@ services:
     container_name: projetoprefeitura
     build:
       context: ../Projetoprefeitura
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     ports:
-      - "8004:8004"
+      - "8004:80"
+    dns:
+      - "1.1.1.1"
+      - "8.8.8.8"
+      - "208.67.222.222"
     environment:
       VITE_API_URL: ${VITE_API_URL}
       VITE_PROXY_TARGET: ${VITE_PROXY_TARGET}
