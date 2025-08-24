@@ -41,7 +41,7 @@ Antes de começar, certifique-se de ter as seguintes ferramentas instaladas em s
     No terminal, dentro da pasta `Integracao`, execute o seguinte comando. O `--build` é importante na primeira vez para construir as imagens do zero.
 
     ```bash
-    docker compose -f docker/docker-compose.dev.yml up --build -d
+    docker compose up --build -d
     ```
 
 6.  **Acesse a aplicação:**
@@ -54,13 +54,13 @@ O projeto está organizado em três diretórios principais no mesmo nível:
 
 -   **/Projetoprefeitura**: Contém todo o código-fonte do frontend em React.
 -   **/projeto-prefeitura-backend**: Contém todo o código-fonte do backend em Node.js/Express.
--   **/Integracao**: Contém a pasta `docker` com os arquivos de orquestração e o arquivo de ambiente `.env`.
+-   **/Integracao**: Contém o arquivo de orquestração `docker-compose.yml` e o arquivo de ambiente `.env`.
 
 ## Comandos Úteis do Docker
 
 -   **Parar os containers:**
     ```bash
-    docker compose -f docker/docker-compose.dev.yml down
+    docker compose down
     ```
 
 -   **Verificar os logs de um serviço (ex: backend):**
@@ -75,5 +75,5 @@ O projeto está organizado em três diretórios principais no mesmo nível:
 
 -   **Verificar o status dos containers:**
     ```bash
-    docker compose -f docker/docker-compose.dev.yml ps
+    docker compose ps
     ```
