@@ -23,6 +23,8 @@ services:
       CLOUDINARY_CLOUD_NAME: ${CLOUDINARY_CLOUD_NAME}
       CLOUDINARY_API_KEY: ${CLOUDINARY_API_KEY}
       CLOUDINARY_API_SECRET: ${CLOUDINARY_API_SECRET}
+    networks:
+      - boraimpactar2
 
   frontend:
     container_name: projetoprefeitura
@@ -42,3 +44,9 @@ services:
       VITE_PROXY_TARGET: ${VITE_PROXY_TARGET}
     depends_on:
       - backend
+    networks:
+      - boraimpactar2
+
+networks:
+  boraimpactar2:
+    external: true
